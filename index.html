@@ -736,6 +736,38 @@
   <footer>
     <p>© 2026 Guruprasad S — Built with care &amp; code</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("YOUR_PUBLIC_KEY");
 
-</body>
+  document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const btn = this.querySelector('button[type="submit"], button');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const params = {
+      from_name:  this.querySelector('input[placeholder*="Name"], input[name="name"]').value,
+      from_email: this.querySelector('input[type="email"], input[placeholder*="Email"]').value,
+      subject:    this.querySelector('input[placeholder*="Subject"], input[name="subject"]').value,
+      message:    this.querySelector('textarea').value,
+    };
+
+    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", params)
+      .then(() => {
+        btn.textContent = 'Message Sent ✓';
+        btn.style.background = '#1D9E75';
+        btn.style.color = '#fff';
+        this.reset();
+        setTimeout(() => { btn.textContent = 'Send Message'; btn.disabled = false; btn.style = ''; }, 3000);
+      })
+      .catch((err) => {
+        console.error(err);
+        btn.textContent = 'Failed — Try Again';
+        btn.disabled = false;
+      });
+  });
+</script>
+bq4QvtA2BGr92Q7cE
 </html>
