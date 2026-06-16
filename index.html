@@ -705,6 +705,15 @@
             <a href="https://github.com" target="_blank" class="social-btn">🐙 GitHub</a>
           </div>
         </div>
+        <div class="contact-form" style="margin-top:2rem;">
+  <form id="contact-form">
+    <input type="text" id="from_name" placeholder="Your Name" required style="width:100%;padding:.75rem 1rem;margin-bottom:1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.95rem;">
+    <input type="email" id="from_email" placeholder="Your Email" required style="width:100%;padding:.75rem 1rem;margin-bottom:1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.95rem;">
+    <input type="text" id="subject" placeholder="Subject" required style="width:100%;padding:.75rem 1rem;margin-bottom:1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.95rem;">
+    <textarea id="message" placeholder="Your Message" rows="5" required style="width:100%;padding:.75rem 1rem;margin-bottom:1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.95rem;resize:vertical;"></textarea>
+    <button type="submit" style="width:100%;padding:.85rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;">Send Message</button>
+  </form>
+</div>
         <div>
           <div class="contact-form">
             <div class="form-row">
@@ -740,7 +749,7 @@
 <script>
   emailjs.init("YOUR_PUBLIC_KEY");
 
-  document.querySelector('form').addEventListener('submit', function(e) {
+  document.querySelector('#contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
     const btn = this.querySelector('button[type="submit"], button');
